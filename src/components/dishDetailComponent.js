@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
-class Dishdetail extends Component {
-
-    renderDish(dish){
+function RenderDish({dish}){
         return (
             <div className="col-md-5 m-1">
                             <Card>
@@ -15,16 +13,16 @@ class Dishdetail extends Component {
                             </Card>
             </div>
         );
-    }
+    } 
 
-    renderComments(comms){
+function RenderComments({comms}){
         const com = comms.map((dish) => {
             if(dish.comment != null ){
                 return (
                     <div>
                         <ul className = "list-unstyled">
                             <li> {dish.comment} </li>
-                            <li> --{dish.author} </li>
+                            <li> --{dish.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(dish.date)))}</li>
                         </ul>
                     </div>
                 );
@@ -36,28 +34,31 @@ class Dishdetail extends Component {
         return com;
     }
 
-    render(){
-        const dish = this.props.dish;    
+const Dishdetail = (props) => {
+        const dish = props.dish;    
         if(dish != null){
                 return(
-                    <div className = "row">
-                       
-                            { this.renderDish (dish) }
-        
-                        <div className = "col-md-5 m-1">
-                            <h4>Comments</h4>
-                            { this.renderComments(dish.comments) }
+                    <div className = "container">
+                        <div className = "row">
+                            
+                                <RenderDish dish = {dish}/>
+                            
+            
+                            <div className = "col-md-5 m-1">
+                                <h4>Comments</h4>
+                                <RenderComments comms = {dish.comments} />
+                            </div>
+                            
                         </div>
-                        
                     </div>
                 );
-            }
-            else {
-                return (
-                    <div></div>
-                );
-            }
-    }
+        }
+        else {
+            return (
+                <div></div>
+            );
+        }
 }
+
 
 export default Dishdetail;

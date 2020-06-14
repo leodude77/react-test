@@ -62,8 +62,8 @@ class Header extends Component{
                                 <h1>Poggers</h1>
                                 <p> KEKW </p>
                             </div>
-                        </div>
-                    </div>
+                      </div>
+                     </div>
                 </Jumbotron>
             </>
         );

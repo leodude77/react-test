@@ -125,10 +125,10 @@ function RenderComments({comms, postComment, dishId}){
                 return (
                     <div>
                         <ul className = "list-unstyled">
-                            <Stagger in>
+        
                             <li> {dish.comment} </li>
-                            <li> --{dish.author} , {dish.date} </li>
-                            </Stagger>
+                            <li> --{dish.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(dish.date)))} </li>
+                           
                         </ul>
                     </div>
                 );

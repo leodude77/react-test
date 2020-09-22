@@ -8,9 +8,8 @@ function About(props) {
 
     const leaders = props.leaders.map((leader) => {
         return (
-            <Stagger in>
                 <RenderLeader leader = {leader}/>
-            </Stagger>
+           
            
         );
     });
@@ -71,7 +70,9 @@ function About(props) {
                 </div>
                 <div className="col-12">
                 <Media list>
+                    <Stagger in>
                         {leaders}
+                    </Stagger>
                 </Media>
                 </div>
             </div>
